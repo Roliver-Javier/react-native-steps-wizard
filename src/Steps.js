@@ -4,28 +4,12 @@ import StepHeader from './components/stepbar/StepHeader';
 import StepContent from './components/stepbar/StepContent';
 import StepFooter from './components/stepbar/StepFooter';
 import StepsContext from './context/stepsContext';
-import Shipping from './Shipping';
-import Payments from './Payments';
-import Confirmation from './Confirmation';
 
-const Steps = () => {
+const Steps = ({ routes }) => {
   const stepsContext = useContext(StepsContext);
   const { setSteps, setCurrentStep } = stepsContext;
   useEffect(() => {
-    setSteps([
-      {
-        title: 'Shipping',
-        component: () => <Shipping />,
-      },
-      {
-        title: 'Payments',
-        component: () => <Payments />,
-      },
-      {
-        title: 'Confirmation',
-        component: () => <Confirmation />,
-      },
-    ]);
+    setSteps([...routes]);
     setCurrentStep(1);
   }, []);
 
